@@ -1,0 +1,12 @@
+y4m 格式介绍：https://wiki.multimedia.cx/index.php/YUV4MPEG2
+y4m 与 yuv（yuv420 8bit planar） 互转命令：
+    y4mtoyuv: ffmpeg -i xx.y4m -vsync 0 xx.yuv  -y
+    yuvtoy4m: ffmpeg -s 1920x1080 -i xx.yuv -vsync 0 xx.y4m -y
+y4m 与 png 互转命令：
+   y4mtobmp: ffmpeg -i xx.y4m -vsync 0 xx%3d.bmp -y
+   bmptoy4m: ffmpeg -i xx%3d.bmp  -pix_fmt yuv420p  -vsync 0 xx.y4m -y
+y4m 每25帧抽样命令：
+   ffmpeg -i xxx.y4m -vf select='not(mod(n\,25))' -vsync 0  -y xxx_sub25.y4m
+————————————————
+版权声明：本文为CSDN博主「小白xbw」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/qq_36852276/article/details/90322575
